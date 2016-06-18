@@ -1,2 +1,31 @@
 # RichTool
 richtool 命令行工具
+
+Usage: richtool [options] <file ...>
+
+
+  Commands:
+
+    path <path>        查看当前命令执行路径，可使用 ./ ../相对路径
+    tsx <path>         tsx格式转换工具，path及子目录中png图片转换Tiled支持的tsx文件
+    e2j <type> <path>  type（0 object格式，1 array格式），表格文件UTF-8 转换 Json 工具，在当前目录下输出 *.json 文件
+    ws [port]          开启一个静态服务器，静态目录为当前命令执行目录，设定端口，默认为 9527
+
+  Options:
+
+    -h, --help              output usage information
+    -V, --version           output the version number
+    -i, --integer <n>       An integer argument
+    -f, --float <n>         A float argument
+    -r, --range <a>..<b>    A range
+    -l, --list <items>      A list
+    -o, --optional [value]  An optional value
+    -c, --collect [value]   A repeatable value
+    -v, --verbose           A value that can be increased
+
+Description:
+
+    @Version: 1.0.2.160618
+    @Author: richliu1023
+    @Email richliu1023@gmail.com
+    @Github https://github.com/RichLiu1023

@@ -1,0 +1,25 @@
+{
+  "name": "RichTool",
+  "version": "1.0.3",
+  "description": "工具大全",
+  "main":"src/index.js",
+  "bin" : { "richtool" : "src/index.js" },
+  "author": {
+    "name" : "richliu1023",
+    "email" : "richliu1023@gmail.com",
+    "blog" : "http://www.cnblogs.com/Richard-Core/",
+    "github": "https://github.com/richliu1023"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "2.9.0",
+    "cors": "2.7.1",
+    "express": "4.13.4",
+    "morgan": "1.7.0",
+    "image-size":"0.5.0"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/richliu1023"
+  }
+}

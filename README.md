@@ -10,6 +10,7 @@ Usage: richtool [options] <file ...>
     tsx <path>         tsx格式转换工具，path及子目录中png图片转换Tiled支持的tsx文件
     e2j <type> <path>  type（0 object格式，1 array格式），表格文件UTF-8 转换 Json 工具，在当前目录下输出 *.json 文件
     ws [port]          开启一个静态服务器，静态目录为当前命令执行目录，设定端口，默认为 9527
+    dt [path]          打印目录的文件结构
 
   Options:
 
@@ -25,7 +26,7 @@ Usage: richtool [options] <file ...>
 
 Description:
 
-    @Version: 1.0.2.160618
+    @Version: 1.0.4.160626
     @Author: richliu1023
     @Email richliu1023@gmail.com
     @Github https://github.com/RichLiu1023

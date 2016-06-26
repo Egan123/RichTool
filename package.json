@@ -1,6 +1,6 @@
 {
   "name": "RichTool",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "工具大全",
   "main":"src/index.js",
   "bin" : { "richtool" : "src/index.js" },

@@ -1,0 +1,44 @@
+/**
+ * Create by richliu1023
+ * @email richliu1023@gmail.com
+ * @github https://github.com/RichLiu1023
+ * @description a simple explanation
+ */
+class {$CLASS_NAME$} extends BaseDisplayApp implements rm.IApp{
+	{$CLASS_ATTRIBUTES$}
+	public constructor() {
+		super();
+	}
+
+	init():void {
+		this.skinName = '{$CLASS_SKIN$}';
+	}
+
+	addEvent():void {
+	    {$CLASS_ADD_EVENT$}
+	}
+
+	removeEvent():void {
+	    {$CLASS_REMOVE_EVENT$}
+	}
+
+	refresh( data:any ):void {
+	}
+
+	dispose():void {
+	}
+
+	public show( $parentContainer?:egret.DisplayObjectContainer ):void {
+		super.show( $parentContainer );
+	}
+
+	public hide():void {
+		super.hide();
+	}
+
+	private onClick( touch:egret.TouchEvent ):void {
+        switch ( touch.currentTarget ) {
+            {$CLASS_CLICK$}
+        }
+    }
+}

@@ -18,7 +18,7 @@ exports.setup = function (dirname) {
 };
 
 var doParse = function (src, ex, space) {
-    var flag = '├── ',
+    var flag = '├─ ',
         sp = space || '';
     var st = stat(src);
     if (st.isFile()) {
@@ -33,7 +33,7 @@ var doParse = function (src, ex, space) {
             return stt.isDirectory();
         });
         for (var i = 0; i < length; i++) {
-            if (i + 1 == length)flag = '└── ';
+            if (i + 1 == length)flag = '└─ ';
             var item = arr[i];
             var p = path.resolve(src, item);
             if (p == ex) {

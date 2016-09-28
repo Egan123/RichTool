@@ -1,4 +1,4 @@
-# RichTool
+﻿# RichTool
 richtool 命令行工具
 
   Usage: index [options] <file ...>
@@ -27,7 +27,7 @@ richtool 命令行工具
 
   Description:
 
-    @Version: 1.0.5.160818
+    @Version: 1.0.6.160901
     @Author: richliu1023
     @Email richliu1023@gmail.com
     @Github https://github.com/RichLiu1023

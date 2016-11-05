@@ -39,7 +39,7 @@ var readFile = function (path) {
 
 var writeToFile = function (path, data) {
     var filename = getFileName(path);
-    var url = outpath + '\\' + filename + '.ts';
+    var url = outpath + '/' + filename + '.ts';
     fs.writeFile(url, data, function (error) {
         if (error) {
             return console.log('!!!! Write To File Error :', error);

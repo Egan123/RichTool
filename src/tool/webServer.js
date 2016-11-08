@@ -16,7 +16,7 @@ exports.setup = function (port) {
     app.use(cors());
     app.use(express.static(process.cwd()));
     app.listen(port, function () {
-        console.log('Start WebServer Complete :', common.getLocalIP() + ':' + port);
+        console.log('Start WebServer Complete :', 'http://'+common.getLocalIP() + ':' + port+'/');
         console.log('Static Direction :', process.cwd());
     });
 };

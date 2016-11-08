@@ -4,7 +4,7 @@
  * @github https://github.com/RichLiu1023
  * @description a simple explanation
  */
-class {$CLASS_NAME$} extends BaseDisplayApp implements rm.IApp{
+class {$CLASS_NAME$} extends BaseDisplayApp implements app.IApp{
 	{$CLASS_ATTRIBUTES$}
 	public constructor() {
 		super();

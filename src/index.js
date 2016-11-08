@@ -22,7 +22,7 @@ function curPath(value) {
 }
 var program = require('commander');
 program
-    .version('1.0.6.160901')
+    .version('1.0.6.161104')
     .usage('[options] <file ...>')
     .option('-i, --integer <n>', 'An integer argument', parseInt)
     .option('-f, --float <n>', 'A float argument', parseFloat)
@@ -34,7 +34,7 @@ program
     .on('--help', function () {
         console.log('Description:');
         console.log();
-        console.log('    @Version: 1.0.6.160901');
+        console.log('    @Version: 1.0.6.161104');
         console.log('    @Author: richliu1023');
         console.log('    @Email richliu1023@gmail.com');
         console.log('    @Github https://github.com/RichLiu1023');

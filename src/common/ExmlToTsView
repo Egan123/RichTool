@@ -3,11 +3,18 @@ class {$CLASS_NAME$} extends BaseDisplayApp{
 	public constructor() {
 		super();
         this.skinName = '{$CLASS_SKIN$}';
-		{$CLASS_ADD_EVENT$}
+		
 	}
-	private onClick( touch:egret.TouchEvent ):void {
-        switch ( touch.currentTarget ) {
-            {$CLASS_CLICK$}
-        }
+	public addOnClick( callback, thisObj ):void {
+        {$CLASS_ADD_EVENT$}
+    }
+	public removeOnClick( callback, thisObj ):void {
+        {$CLASS_REMOVE_EVENT$}
+    }
+	public addOnChange( callback, thisObj ):void {
+        {$CLASS_ADD_CHANGE_EVENT$}
+    }
+	public removeOnChange( callback, thisObj ):void {
+        {$CLASS_REMOVE_CHANGE_EVENT$}
     }
 }

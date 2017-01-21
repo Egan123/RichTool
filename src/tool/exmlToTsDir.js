@@ -66,9 +66,11 @@ var getResult = function (exml, filename) {
     mod = mod.replace('{$CLASS_ATTRIBUTES$}', attributes);
     mod = mod.replace('{$CLASS_NAME$}', filename);
     mod = mod.replace('{$CLASS_SKIN$}', filename + 'Skin');
-    mod = mod.replace('{$CLASS_CLICK$}', convertResultClickEvent());
+    // mod = mod.replace('{$CLASS_CLICK$}', convertResultClickEvent());
     mod = mod.replace('{$CLASS_ADD_EVENT$}', convertResultButtonAddEvent());
-    // mod = mod.replace('{$CLASS_REMOVE_EVENT$}', convertResultButtonRemoveEvent());
+    mod = mod.replace('{$CLASS_REMOVE_EVENT$}', convertResultButtonRemoveEvent());
+    mod = mod.replace('{$CLASS_ADD_CHANGE_EVENT$}', convertResultChangeAddEvent());
+    mod = mod.replace('{$CLASS_REMOVE_CHANGE_EVENT$}', convertResultChangeRemoveEvent());
     return mod;
 };
 
@@ -106,7 +108,7 @@ var convertResultButtonAddEvent = function () {
     var txt = '\n';
     for (var key in result) {
         if (result[key] == 'Button') {
-            txt += '\t\tthis.' + key + '.addEventListener( egret.TouchEvent.TOUCH_TAP, this.onClick, this );\n'
+            txt += '\t\tthis.' + key + '.addEventListener( egret.TouchEvent.TOUCH_TAP, callback, thisObj );\n'
         }
     }
     return txt;
@@ -116,7 +118,7 @@ var convertResultButtonRemoveEvent = function () {
     var txt = '\n';
     for (var key in result) {
         if (result[key] == 'Button') {
-            txt += '\t\tthis.' + key + '.removeEventListener( egret.TouchEvent.TOUCH_TAP, this.onClick, this );\n'
+            txt += '\t\tthis.' + key + '.removeEventListener( egret.TouchEvent.TOUCH_TAP, callback, thisObj );\n'
         }
     }
     return txt;
@@ -128,6 +130,26 @@ var convertResultClickEvent = function () {
         if (result[key] == 'Button') {
             txt += '\t\t\tcase this.' + key + ':\n' +
                 '\t\t\t\tbreak;\n';
+        }
+    }
+    return txt;
+};
+var changeListSign = ['ToggleButton','CheckBox','ProgressBar','HSlider','VSlider','TextInput','ToggleSwitch'];
+var convertResultChangeAddEvent = function () {
+    var txt = '\n';
+    for (var key in result) {
+        if (~changeListSign.indexOf(result[key])) {
+            txt += '\t\tthis.' + key + '.addEventListener( egret.TouchEvent.CHANGE, callback, thisObj );\n'
+        }
+    }
+    return txt;
+};
+
+var convertResultChangeRemoveEvent = function () {
+    var txt = '\n';
+    for (var key in result) {
+        if (~changeListSign.indexOf(result[key])) {
+            txt += '\t\tthis.' + key + '.removeEventListener( egret.TouchEvent.CHANGE, callback, thisObj );\n'
         }
     }
     return txt;

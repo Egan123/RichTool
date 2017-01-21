@@ -77,7 +77,7 @@ var getResult = function (exml, path) {
     mod = mod.replace('{$CLASS_SKIN$}', filename + 'Skin');
     mod = mod.replace('{$CLASS_CLICK$}', convertResultClickEvent());
     mod = mod.replace('{$CLASS_ADD_EVENT$}', convertResultButtonAddEvent());
-    mod = mod.replace('{$CLASS_REMOVE_EVENT$}', convertResultButtonRemoveEvent());
+    // mod = mod.replace('{$CLASS_REMOVE_EVENT$}', convertResultButtonRemoveEvent());
     return mod;
 };
 

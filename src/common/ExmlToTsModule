@@ -12,21 +12,17 @@ class {$CLASS_NAME$} extends BaseDisplayApp implements app.IApp{
 
 	init():void {
 		this.skinName = '{$CLASS_SKIN$}';
+
+		{$CLASS_ADD_EVENT$}
 	}
 
-	addEvent():void {
-	    {$CLASS_ADD_EVENT$}
-	}
+	addEvent():void {}
 
-	removeEvent():void {
-	    {$CLASS_REMOVE_EVENT$}
-	}
+	removeEvent():void {}
 
-	refresh( data:any ):void {
-	}
+	refresh( data:any ):void {}
 
-	dispose():void {
-	}
+	dispose():void {}
 
 	public show( $parentContainer?:egret.DisplayObjectContainer ):void {
 		super.show( $parentContainer );

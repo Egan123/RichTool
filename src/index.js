@@ -22,7 +22,7 @@ function curPath(value) {
 }
 var program = require('commander');
 program
-    .version('1.0.6.161104')
+    .version('1.1.0.170121')
     .usage('[options] <file ...>')
     .option('-i, --integer <n>', 'An integer argument', parseInt)
     .option('-f, --float <n>', 'A float argument', parseFloat)
@@ -34,7 +34,7 @@ program
     .on('--help', function () {
         console.log('Description:');
         console.log();
-        console.log('    @Version: 1.0.6.161104');
+        console.log('    @Version: 1.1.0.170121');
         console.log('    @Author: richliu1023');
         console.log('    @Email richliu1023@gmail.com');
         console.log('    @Github https://github.com/RichLiu1023');
@@ -48,6 +48,7 @@ var path = require('path');
 var webServer = require('./tool/webServer.js');
 var dir_tree = require('./tool/DirTree.js');
 var exml2ts = require('./tool/ExmlToTs.js');
+var exml2tsDir = require('./tool/exmlToTsDir.js');
 
 program.command('path <path>').action(curPath)
     .description('查看当前命令执行路径，可使用 ./ ../相对路径');
@@ -61,5 +62,7 @@ program.command('dt [path]').action(dir_tree.setup)
     .description('打印目录的文件结构');
 program.command('e2t <path> [outpath]').action(exml2ts.setup)
     .description('白鹭 EXML 转换为 TS');
+program.command('e2ts <path> <outpath> [isMergin]').action(exml2tsDir.setup)
+    .description('白鹭 EXML 转换为 TS,批量、合并');
 
 program.parse(process.argv);

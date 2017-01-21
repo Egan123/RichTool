@@ -1,0 +1,13 @@
+class {$CLASS_NAME$} extends BaseDisplayApp{
+	{$CLASS_ATTRIBUTES$}
+	public constructor() {
+		super();
+        this.skinName = '{$CLASS_SKIN$}';
+		{$CLASS_ADD_EVENT$}
+	}
+	private onClick( touch:egret.TouchEvent ):void {
+        switch ( touch.currentTarget ) {
+            {$CLASS_CLICK$}
+        }
+    }
+}

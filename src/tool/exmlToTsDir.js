@@ -3,7 +3,8 @@ var fs = require('fs');
 var fileUtil = require('../common/FileUtil');
 var stat = fs.statSync;
 var result = {};
-
+var parseList = ['PanelSkin', 'ComponentSkin','ItemRenderSkin'];
+var extnedsObj = ['BaseDisplayApp', 'eui.Component','eui.ItemRenderer'];
 exports.setup = function (dirname, outfpath, isMergin) {
     var dirname = p.resolve(dirname || process.cwd());
     var outpath = p.resolve(outfpath || process.cwd());
@@ -11,8 +12,10 @@ exports.setup = function (dirname, outfpath, isMergin) {
     var list = fileUtil.search(dirname, 'exml');
     var items = [];
     list.forEach(function (item) {
-        var idx = p.basename(item).indexOf('PanelSkin');
-        if (idx > 0) items.push(item);
+        parseList.forEach(function (element) {
+            var idx = p.basename(item).indexOf(element);
+            if (idx > 0) items.push(item);
+        }, this);
     }, this);
     if (items.length > 0) doParse(dirname, outpath, items, isMergin);
 };
@@ -48,6 +51,16 @@ var getFileName = function (path) {
     return filename;
 };
 
+
+var getExtendObj = function (skinname) {
+    var obj = 'eui.Component';
+    parseList.forEach(function (item, idx) {
+        var x = skinname.indexOf(item);
+        if (x > 0) obj = extnedsObj[idx]
+    });
+    return obj;
+};
+
 var dom = require('xmldom').DOMParser;
 var getResult = function (exml, filename) {
     var xmlDoc = new dom();
@@ -66,6 +79,7 @@ var getResult = function (exml, filename) {
     mod = mod.replace('{$CLASS_ATTRIBUTES$}', attributes);
     mod = mod.replace('{$CLASS_NAME$}', filename);
     mod = mod.replace('{$CLASS_SKIN$}', filename + 'Skin');
+    mod = mod.replace('{$CLASS_EXTENDS_SKIN$}', getExtendObj(filename + 'Skin'));
     // mod = mod.replace('{$CLASS_CLICK$}', convertResultClickEvent());
     mod = mod.replace('{$CLASS_ADD_EVENT$}', convertResultButtonAddEvent());
     mod = mod.replace('{$CLASS_REMOVE_EVENT$}', convertResultButtonRemoveEvent());
@@ -134,7 +148,7 @@ var convertResultClickEvent = function () {
     }
     return txt;
 };
-var changeListSign = ['ToggleButton','CheckBox','ProgressBar','HSlider','VSlider','TextInput','ToggleSwitch'];
+var changeListSign = ['ToggleButton', 'CheckBox', 'ProgressBar', 'HSlider', 'VSlider', 'TextInput', 'ToggleSwitch', 'List'];
 var convertResultChangeAddEvent = function () {
     var txt = '\n';
     for (var key in result) {

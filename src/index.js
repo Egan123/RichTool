@@ -62,7 +62,7 @@ program.command('dt [path]').action(dir_tree.setup)
     .description('打印目录的文件结构');
 program.command('e2t <path> [outpath]').action(exml2ts.setup)
     .description('白鹭 EXML 转换为 TS');
-program.command('e2ts <path> <outpath> [isMergin]').action(exml2tsDir.setup)
-    .description('白鹭 EXML 转换为 TS,批量、合并');
+program.command('e2ts <path> <outpath> [isMergin] [extendObj] [namespace]').action(exml2tsDir.setup)
+    .description('白鹭 EXML 转换为 TS,批量、合并(extendObj为Panel继承的对象,namespace为Panel的域名)');
 
 program.parse(process.argv);

@@ -1,0 +1,17 @@
+module {$CLASS_NAMESPACE$}{
+	export class {$CLASS_NAME$} extends {$CLASS_EXTENDS_SKIN$} {
+		{$CLASS_ATTRIBUTES$}
+		public constructor() {
+			super();
+			this.skinName = '{$CLASS_SKIN$}';
+		}
+		public addOnClick( callback, thisObj ):void {{$CLASS_ADD_EVENT$}
+		}
+		public removeOnClick( callback, thisObj ):void {{$CLASS_REMOVE_EVENT$}
+		}
+		public addOnChange( callback, thisObj ):void {{$CLASS_ADD_CHANGE_EVENT$}
+		}
+		public removeOnChange( callback, thisObj ):void {{$CLASS_REMOVE_CHANGE_EVENT$}
+		}
+	}
+}

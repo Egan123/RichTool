@@ -3,12 +3,12 @@ var fs = require('fs');
 var fileUtil = require('../common/FileUtil');
 var stat = fs.statSync;
 var result = {};
-var parseList = ['PanelSkin', 'ComponentSkin','ItemRenderSkin'];
-var extnedsObj = ['BaseDisplayApp', 'eui.Component','eui.ItemRenderer'];
-exports.setup = function (dirname, outfpath, isMergin) {
+var parseList = ['PanelSkin', 'ComponentSkin', 'ItemRenderSkin'];
+var extnedsObj = ['BaseDisplayApp', 'eui.Component', 'eui.ItemRenderer'];
+var namespaceSign = '';
+exports.setup = function (dirname, outfpath, isMergin, extendObj, sign) {
     var dirname = p.resolve(dirname || process.cwd());
     var outpath = p.resolve(outfpath || process.cwd());
-    isMergin = isMergin || false;
     var list = fileUtil.search(dirname, 'exml');
     var items = [];
     list.forEach(function (item) {
@@ -17,7 +17,9 @@ exports.setup = function (dirname, outfpath, isMergin) {
             if (idx > 0) items.push(item);
         }, this);
     }, this);
-    if (items.length > 0) doParse(dirname, outpath, items, isMergin);
+    extnedsObj[0] = extendObj || 'BaseDisplayApp';
+    namespaceSign = sign || namespaceSign;
+    if (items.length > 0) doParse(dirname, outpath, items, isMergin || false);
 };
 
 var doParse = function (dirname, outpath, items, isMergin) {
@@ -73,9 +75,16 @@ var getResult = function (exml, filename) {
         }
     }
     var attributes = convertResult();
-
-    var url = p.resolve(__dirname, '../common/ExmlToTsView');
-    var mod = fs.readFileSync(url).toString();
+    var mod = '';
+    if (namespaceSign && namespaceSign.length > 0) {
+        var url = p.resolve(__dirname, '../common/ExmlToTsViewNS');
+        mod = fs.readFileSync(url).toString();
+        mod = mod.replace('{$CLASS_NAMESPACE$}', namespaceSign);
+    }
+    else {
+        var url = p.resolve(__dirname, '../common/ExmlToTsView');
+        mod = fs.readFileSync(url).toString();
+    }
     mod = mod.replace('{$CLASS_ATTRIBUTES$}', attributes);
     mod = mod.replace('{$CLASS_NAME$}', filename);
     mod = mod.replace('{$CLASS_SKIN$}', filename + 'Skin');

@@ -12,7 +12,8 @@ richtool 命令行工具
     ws [port]             开启一个静态服务器，静态目录为当前命令执行目录，设定端口，默认为 9527
     dt [path]             打印目录的文件结构
     e2ts <path> <outpath> [isMergin] [extendObj] [namespace]  白鹭 EXML 转换为 TS,批量、合并(extendObj为Panel继承的对象,namespace为Panel的域名)
-
+    v2index <path>        版本附加工具，用于生成版本号．需要index文件中包含version标签
+    
   Options:
 
     -h, --help              output usage information

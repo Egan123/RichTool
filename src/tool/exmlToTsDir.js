@@ -5,6 +5,9 @@ var stat = fs.statSync;
 var result = {};
 var parseList = ['PanelSkin', 'ComponentSkin', 'ItemRenderSkin'];
 var extnedsObj = ['BaseDisplayApp', 'eui.Component', 'eui.ItemRenderer'];
+var classList = {
+    "TweenGroup": "egret.tween.TweenGroup"
+};
 var namespaceSign = '';
 exports.setup = function (dirname, outfpath, isMergin, extendObj, sign) {
     var dirname = p.resolve(dirname || process.cwd());
@@ -122,7 +125,9 @@ var parseNS = function (node) {
 var convertResult = function () {
     var txt = '\n';
     for (var key in result) {
-        txt += '\tpublic ' + key + ':eui.' + result[key] + ';\n';
+        var str = classList[result[key]];
+        if (!str) str = 'eui.' + result[key];
+        txt += '\tpublic ' + key + ':' + str + ';\n';
     }
     return txt;
 };

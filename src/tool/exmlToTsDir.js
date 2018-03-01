@@ -162,7 +162,7 @@ var convertResultClickEvent = function () {
     }
     return txt;
 };
-var changeListSign = ['ToggleButton', 'CheckBox', 'ProgressBar', 'HSlider', 'VSlider', 'TextInput', 'ToggleSwitch', 'List'];
+var changeListSign = ['ToggleButton', 'CheckBox', 'ProgressBar', 'HSlider', 'VSlider', 'TextInput', 'ToggleSwitch', 'List', 'TabBar'];
 var convertResultChangeAddEvent = function () {
     var txt = '\n';
     for (var key in result) {

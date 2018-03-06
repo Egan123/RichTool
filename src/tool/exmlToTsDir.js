@@ -5,8 +5,33 @@ var stat = fs.statSync;
 var result = {};
 var parseList = ['PanelSkin', 'ComponentSkin', 'ItemRenderSkin'];
 var extnedsObj = ['BaseDisplayApp', 'eui.Component', 'eui.ItemRenderer'];
+
 var classList = {
-    "TweenGroup": "egret.tween.TweenGroup"
+    'BitmapLabel': "eui.BitmapLabel",
+    'Button': "eui.Button",
+    'CheckBox': "eui.CheckBox",
+    'Component': "eui.Component",
+    'DataGroup': "eui.DataGroup",
+    'EditableText': "eui.EditableText",
+    'HScrollBar': "eui.HScrollBar",
+    'HSlider': "eui.HSlider",
+    'Image': "eui.Image",
+    'Label': "eui.Label",
+    'List': "eui.List",
+    "TweenGroup": "egret.tween.TweenGroup",
+    'ProgressBar': "eui.ProgressBar",
+    'RadioButton': "eui.RadioButton",
+    'Rect': "eui.Rect",
+    'TabBar': "eui.TabBar",
+    'TextInput': "eui.TextInput",
+    'ToggleButton': "eui.ToggleButton",
+    'ToggleSwitch': "eui.ToggleSwitch",
+    'VScrollBar': "eui.VScrollBar",
+    'VSlider': "eui.VSlider",
+    'Group': "eui.Group",
+    'Panel': "eui.Panel",
+    'Scroller': "eui.Scroller",
+    'ViewStack': "eui.ViewStack"
 };
 var namespaceSign = '';
 exports.setup = function (dirname, outfpath, isMergin, extendObj, sign) {
@@ -126,7 +151,7 @@ var convertResult = function () {
     var txt = '\n';
     for (var key in result) {
         var str = classList[result[key]];
-        if (!str) str = 'eui.' + result[key];
+        if (!str) str = result[key];
         txt += '\tpublic ' + key + ':' + str + ';\n';
     }
     return txt;

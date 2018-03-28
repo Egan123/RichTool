@@ -421,6 +421,6 @@ function getAbsolutePath(path) {
     if (tempPath == path) {
         return path;
     }
-    return joinPath(egret.args.projectDir, path);
+    return joinPath(process.cwd(), path);
 }
 exports.getAbsolutePath = getAbsolutePath;

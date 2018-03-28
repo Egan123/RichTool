@@ -1,3 +1,3 @@
 @echo off
-for %%i in (%*) do richtool egretVersion %%i %~dp0
+for %%i in (%*) do richtool v2index %%i %~dp0
 pause

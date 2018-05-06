@@ -1,9 +1,3 @@
-/**
- * Create by richliu1023
- * @email richliu1023@gmail.com
- * @github https://github.com/RichLiu1023
- * @description a simple explanation
- */
 class {$CLASS_NAME$} extends BaseDisplayApp implements app.IApp{
 	{$CLASS_ATTRIBUTES$}
 	public constructor() {

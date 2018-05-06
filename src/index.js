@@ -22,7 +22,7 @@ function curPath(value) {
 }
 var program = require('commander');
 program
-    .version('1.2.2.180328')
+    .version('1.2.3.180505')
     .usage('[options] <file ...>')
     .option('-i, --integer <n>', 'An integer argument', parseInt)
     .option('-f, --float <n>', 'A float argument', parseFloat)
@@ -34,7 +34,7 @@ program
     .on('--help', function () {
         console.log('Description:');
         console.log();
-        console.log('    @Version: 1.2.2.180328');
+        console.log('    @Version: 1.2.3.180505');
         console.log('    @Author: richliu1023');
         console.log('    @Email richliu1023@gmail.com');
         console.log('    @Github https://github.com/RichLiu1023');
@@ -47,7 +47,6 @@ var e2j = require('./tool/ExcelToJson.js');
 var path = require('path');
 var webServer = require('./tool/webServer.js');
 var dir_tree = require('./tool/DirTree.js');
-var exml2ts = require('./tool/ExmlToTs.js');
 var exml2tsDir = require('./tool/exmlToTsDir.js');
 var v2index = require('./tool/v2index.js');
 
@@ -61,8 +60,6 @@ program.command('ws [port]').action(webServer.setup)
     .description('开启一个静态服务器，静态目录为当前命令执行目录，设定端口，默认为 9527');
 program.command('dt [path]').action(dir_tree.setup)
     .description('打印目录的文件结构');
-// program.command('e2t <path> [outpath]').action(exml2ts.setup)
-//     .description('白鹭 EXML 转换为 TS');
 program.command('e2ts <path> <outpath> [isMergin] [extendObj] [namespace]').action(exml2tsDir.setup)
     .description('白鹭 EXML 转换为 TS,批量、合并(extendObj为Panel继承的对象,namespace为Panel的域名)');
 program.command('v2index <path>').action(v2index.setup)

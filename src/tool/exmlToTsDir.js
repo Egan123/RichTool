@@ -5,7 +5,7 @@ var stat = fs.statSync;
 var result = {};
 var parseList = ['PanelSkin', 'ComponentSkin', 'ItemRenderSkin'];
 var extnedsObj = ['BaseDisplayApp', 'eui.Component', 'eui.ItemRenderer'];
-
+var merginFileName = "EUISkinMergin.ts"
 var classList = {
     'BitmapLabel': "eui.BitmapLabel",
     'Button': "eui.Button",
@@ -47,10 +47,11 @@ exports.setup = function (dirname, outfpath, isMergin, extendObj, sign) {
     }, this);
     extnedsObj[0] = extendObj || 'BaseDisplayApp';
     namespaceSign = sign || namespaceSign;
-    if (items.length > 0) doParse(dirname, outpath, items, isMergin || false);
+    merginFileName = isMergin || merginFileName;
+    if (items.length > 0) doParse(dirname, outpath, items);
 };
 
-var doParse = function (dirname, outpath, items, isMergin) {
+var doParse = function (dirname, outpath, items, isMergin = true) {
     var datas = '';
     items.forEach(function (item) {
         result = {}
@@ -68,7 +69,7 @@ var doParse = function (dirname, outpath, items, isMergin) {
         }
     }, this);
     if (isMergin) {
-        var out = outpath + '\\EUISkinMergin.ts';
+        var out = outpath + '\\' + merginFileName;
         console.log(out);
         fileUtil.save(out, datas);
     }

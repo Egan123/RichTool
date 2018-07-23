@@ -49,6 +49,7 @@ var webServer = require('./tool/webServer.js');
 var dir_tree = require('./tool/DirTree.js');
 var exml2tsDir = require('./tool/exmlToTsDir.js');
 var v2index = require('./tool/v2index.js');
+var FileTool = require('./tool/FileTool.js');
 
 program.command('path <path>').action(curPath)
     .description('查看当前命令执行路径，可使用 ./ ../相对路径');
@@ -63,5 +64,7 @@ program.command('dt [path]').action(dir_tree.setup)
 program.command('e2ts <path> <outpath> [isMergin] [extendObj] [namespace]').action(exml2tsDir.setup)
     .description('白鹭 EXML 转换为 TS,批量、合并(extendObj为Panel继承的对象,namespace为Panel的域名)');
 program.command('v2index <path>').action(v2index.setup)
-    .description('版本附加工具，用于生成版本号．需要index文件中包含version标签');
+    .description('版本附加工具，用于生成版本号．解析egret的manifest文件');
+program.command('filetool <type> -l xx,xx,xx').action(FileTool.setup)
+    .description(' 1 crc32重命名 2 复制文件或目录 3 删除文件或目录 4 创建目录');
 program.parse(process.argv);
